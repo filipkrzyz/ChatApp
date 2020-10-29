@@ -99,44 +99,19 @@ class RegistrationController: UIViewController {
         guard let password = passwordTextField.text else { return }
         guard let profileImage = profileImage else { return }
         
-        guard let imageData = profileImage.jpegData(compressionQuality: 0.3) else { return }
+        let credentials = RegistrationCredentials(email: email,
+                                                  fullname: fullname,
+                                                  username: username,
+                                                  password: password,
+                                                  profileImage: profileImage)
         
-        let filename = NSUUID().uuidString
-        let storageReference = Storage.storage().reference(withPath: "/profile_images/\(filename)")
-        
-        storageReference.putData(imageData, metadata: nil) { (meta, error) in
+        AuthService.shared.registerUser(credentials: credentials) { error in
             if let error = error {
-                print(">>> Failed to uplaod image with error: \(error)")
+                print(">>> Failed to upload user data to Firestore with error: \(error)")
                 return
             }
             
-            storageReference.downloadURL { (url, error) in
-                guard let profileImageUrl = url?.absoluteString else { return }
-                
-                Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-                    if let error = error {
-                        print(">>> Failed to create user with error: \(error)")
-                        return
-                    }
-                    
-                    guard let uid = result?.user.uid else { return }
-                    
-                    let data = ["uid": uid,
-                                "email": email,
-                                "fullname": fullname,
-                                "username": username,
-                                "profileImageUrl": profileImageUrl]
-                    
-                    Firestore.firestore().collection("users").document(uid).setData(data) { error in
-                        if let error = error {
-                            print(">>> Failed to upload user data to Firestore with error: \(error)")
-                            return
-                        }
-                        
-                        self.dismiss(animated: true, completion: nil)
-                    }
-                }
-            }
+            self.dismiss(animated: true, completion: nil)
         }
     }
     

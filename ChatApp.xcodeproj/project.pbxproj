@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,6 +23,7 @@
 		DC4B1CC725486BD800D7DD64 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B1CC625486BD800D7DD64 /* LoginViewModel.swift */; };
 		DC4B1CC92548803C00D7DD64 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B1CC82548803C00D7DD64 /* RegistrationViewModel.swift */; };
 		DC4B1CCC2549B92E00D7DD64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC4B1CCB2549B92E00D7DD64 /* GoogleService-Info.plist */; };
+		DC4B1CCE254ABCD700D7DD64 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B1CCD254ABCD700D7DD64 /* AuthService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		DC4B1CC625486BD800D7DD64 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		DC4B1CC82548803C00D7DD64 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		DC4B1CCB2549B92E00D7DD64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		DC4B1CCD254ABCD700D7DD64 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 		DC4B1CB425442E1E00D7DD64 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				DC4B1CCD254ABCD700D7DD64 /* AuthService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -179,7 +182,6 @@
 				C9BC9AC19C5636ED6C739822 /* Pods-ChatApp.debug.xcconfig */,
 				0CBDE667F7BC2D86FAB79438 /* Pods-ChatApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -302,6 +304,7 @@
 				DC4B1CA325442D0400D7DD64 /* ViewController.swift in Sources */,
 				DC4B1CC92548803C00D7DD64 /* RegistrationViewModel.swift in Sources */,
 				DC4B1CC32544606800D7DD64 /* InputContainerView.swift in Sources */,
+				DC4B1CCE254ABCD700D7DD64 /* AuthService.swift in Sources */,
 				DC4B1C9F25442D0400D7DD64 /* AppDelegate.swift in Sources */,
 				DC4B1CBA25442F3100D7DD64 /* ConversationsController.swift in Sources */,
 				DC4B1CA125442D0400D7DD64 /* SceneDelegate.swift in Sources */,
