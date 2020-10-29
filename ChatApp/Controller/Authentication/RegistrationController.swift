@@ -133,7 +133,7 @@ class RegistrationController: UIViewController {
                             return
                         }
                         
-                        print(">>> Successfully created user and uplaoded data to Firebase")
+                        self.dismiss(animated: true, completion: nil)
                     }
                 }
             }
