@@ -7,10 +7,17 @@
 //
 
 import UIKit
+import SDWebImage
 
 class UserCell: UITableViewCell {
     
     // MARK: - Properties
+    
+    var user: User? {
+        didSet {
+            configure()
+        }
+    }
     
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
@@ -39,8 +46,6 @@ class UserCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        backgroundColor = .systemPink
-        
         addSubview(profileImageView)
         profileImageView.centerY(inView: self, leftAnchor: leftAnchor, paddingLeft: 12)
         profileImageView.setDimensions(height: 56, width: 56)
@@ -59,4 +64,15 @@ class UserCell: UITableViewCell {
     }
     
     // MARK: - Helpers
+    
+    func configure() {
+        guard let user = user else { return }
+        
+        usernameLabel.text = user.username
+        fullnameLabel.text = user.fullname
+        
+        guard let url = URL(string: user.profileImageUrl) else { return }
+        profileImageView.sd_setImage(with: url)
+
+    }
 }
