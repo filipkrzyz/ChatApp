@@ -40,7 +40,7 @@ class NewMessageController: UITableViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(handleDismissal))
         
         tableView.tableFooterView = UIView()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: userCellIdentifier)
+        tableView.register(UserCell.self, forCellReuseIdentifier: userCellIdentifier)
         tableView.rowHeight = 80
     }
 }
@@ -54,8 +54,7 @@ extension NewMessageController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: userCellIdentifier,
-                                                 for: indexPath)
-        cell.textLabel?.text = "TestCell"
+                                                 for: indexPath) as! UserCell
         return cell
     }
 }
