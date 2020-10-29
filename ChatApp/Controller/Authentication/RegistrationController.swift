@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import JGProgressHUD
 
 class RegistrationController: UIViewController {
     
@@ -105,12 +106,16 @@ class RegistrationController: UIViewController {
                                                   password: password,
                                                   profileImage: profileImage)
         
+        self.showLoader(true)
+        
         AuthService.shared.registerUser(credentials: credentials) { error in
             if let error = error {
                 print(">>> Failed to upload user data to Firestore with error: \(error)")
+                self.showLoader(false)
                 return
             }
             
+            self.showLoader(false)
             self.dismiss(animated: true, completion: nil)
         }
     }
