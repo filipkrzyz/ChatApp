@@ -102,25 +102,25 @@ extension UIViewController {
             UIViewController.hud.dismiss()
         }
     }
+
+    func configureNavigationBar(withTitle title: String, prefersLargeTitles: Bool) {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.backgroundColor = .systemPurple
+
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.compactAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+
+        navigationController?.navigationBar.prefersLargeTitles = prefersLargeTitles
+        navigationItem.title = title
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.isTranslucent = true
+
+        navigationController?.navigationBar.overrideUserInterfaceStyle = .dark
+    }
 }
-//    func configureNavigationBar(withTitle title: String, prefersLargeTitles: Bool) {
-//        let appearance = UINavigationBarAppearance()
-//        appearance.configureWithOpaqueBackground()
-//        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-//        appearance.backgroundColor = .systemPurple
-//
-//        navigationController?.navigationBar.standardAppearance = appearance
-//        navigationController?.navigationBar.compactAppearance = appearance
-//        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-//
-//        navigationController?.navigationBar.prefersLargeTitles = prefersLargeTitles
-//        navigationItem.title = title
-//        navigationController?.navigationBar.tintColor = .white
-//        navigationController?.navigationBar.isTranslucent = true
-//
-//        navigationController?.navigationBar.overrideUserInterfaceStyle = .dark
-//    }
-//
 //    func showError(_ errorMessage: String) {
 //        let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
 //        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
