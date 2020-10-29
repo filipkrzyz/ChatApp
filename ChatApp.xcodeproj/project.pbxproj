@@ -26,6 +26,8 @@
 		DC4B1CCE254ABCD700D7DD64 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B1CCD254ABCD700D7DD64 /* AuthService.swift */; };
 		DC4B1CD0254ADBE200D7DD64 /* NewMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B1CCF254ADBE200D7DD64 /* NewMessageController.swift */; };
 		DC4B1CD2254AE4F900D7DD64 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B1CD1254AE4F900D7DD64 /* UserCell.swift */; };
+		DC4B1CD4254AEBA600D7DD64 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B1CD3254AEBA600D7DD64 /* User.swift */; };
+		DC4B1CD6254AECC000D7DD64 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B1CD5254AECC000D7DD64 /* Service.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		DC4B1CCD254ABCD700D7DD64 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		DC4B1CCF254ADBE200D7DD64 /* NewMessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageController.swift; sourceTree = "<group>"; };
 		DC4B1CD1254AE4F900D7DD64 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		DC4B1CD3254AEBA600D7DD64 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DC4B1CD5254AECC000D7DD64 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				DC4B1CCD254ABCD700D7DD64 /* AuthService.swift */,
+				DC4B1CD5254AECC000D7DD64 /* Service.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -152,6 +157,7 @@
 		DC4B1CB825442E2500D7DD64 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DC4B1CD3254AEBA600D7DD64 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -315,6 +321,8 @@
 				DC4B1CBA25442F3100D7DD64 /* ConversationsController.swift in Sources */,
 				DC4B1CD2254AE4F900D7DD64 /* UserCell.swift in Sources */,
 				DC4B1CA125442D0400D7DD64 /* SceneDelegate.swift in Sources */,
+				DC4B1CD4254AEBA600D7DD64 /* User.swift in Sources */,
+				DC4B1CD6254AECC000D7DD64 /* Service.swift in Sources */,
 				DC4B1CBF2544406B00D7DD64 /* RegistrationController.swift in Sources */,
 				DC4B1CBD2544404B00D7DD64 /* LoginController.swift in Sources */,
 				DC4B1CC12544477800D7DD64 /* Extensions.swift in Sources */,
