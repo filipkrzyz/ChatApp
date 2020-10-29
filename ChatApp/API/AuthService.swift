@@ -32,7 +32,7 @@ struct AuthService {
         
         storageReference.putData(imageData, metadata: nil) { (meta, error) in
             if let error = error {
-                print(">>> Failed to uplaod image with error: \(error)")
+                completion(error)
                 return
             }
             
@@ -41,7 +41,7 @@ struct AuthService {
                 
                 Auth.auth().createUser(withEmail: credentials.email, password: credentials.password) { (result, error) in
                     if let error = error {
-                        print(">>> Failed to create user with error: \(error)")
+                        completion(error)
                         return
                     }
                     

@@ -17,6 +17,16 @@ class ConversationsController: UIViewController {
     
     private let tableView = UITableView()
     
+    private let newMessageButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "plus"), for: .normal)
+        button.backgroundColor = .systemPurple
+        button.tintColor = .white
+        button.imageView?.setDimensions(height: 24, width: 24)
+        button.addTarget(self, action: #selector(handleNewMessageButtonTap), for: .touchUpInside)
+        return button
+    }()
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -31,6 +41,13 @@ class ConversationsController: UIViewController {
     @objc func showProfile() {
         print(">>> Show profile")
         logout()
+    }
+    
+    @objc func handleNewMessageButtonTap() {
+        let newMessageController = NewMessageController()
+        let navigationController = UINavigationController(rootViewController: newMessageController)
+        navigationController.modalPresentationStyle = .fullScreen
+        present(navigationController, animated: true, completion: nil)
     }
     
     // MARK: - API
@@ -68,12 +85,18 @@ class ConversationsController: UIViewController {
         view.backgroundColor = .white
         
         configuteNavigationBar()
+        configureTableView()
         
         let image = UIImage(systemName: "person.circle.fill")
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain,
                                                            target: self,
                                                            action: #selector(showProfile))
-        configureTableView()
+        view.addSubview(newMessageButton)
+        newMessageButton.setDimensions(height: 56, width: 56)
+        newMessageButton.layer.cornerRadius = 56 / 2
+        newMessageButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                                right: view.rightAnchor,
+                                paddingBottom: 16, paddingRight: 16)
     }
     
     func configuteNavigationBar() {
