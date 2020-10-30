@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7593BA3C02636BB0CDE828C2 /* Pods_ChatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E72F6AC59993AC4CEA81169 /* Pods_ChatApp.framework */; };
 		DC2777A9254B0DFD003E07F7 /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2777A8254B0DFD003E07F7 /* ChatController.swift */; };
+		DC2777AB254C1D22003E07F7 /* CustomInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2777AA254C1D22003E07F7 /* CustomInputAccessoryView.swift */; };
 		DC4B1C9F25442D0400D7DD64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B1C9E25442D0400D7DD64 /* AppDelegate.swift */; };
 		DC4B1CA125442D0400D7DD64 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B1CA025442D0400D7DD64 /* SceneDelegate.swift */; };
 		DC4B1CA325442D0400D7DD64 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B1CA225442D0400D7DD64 /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 		4E72F6AC59993AC4CEA81169 /* Pods_ChatApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9BC9AC19C5636ED6C739822 /* Pods-ChatApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatApp.debug.xcconfig"; path = "Target Support Files/Pods-ChatApp/Pods-ChatApp.debug.xcconfig"; sourceTree = "<group>"; };
 		DC2777A8254B0DFD003E07F7 /* ChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
+		DC2777AA254C1D22003E07F7 /* CustomInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputAccessoryView.swift; sourceTree = "<group>"; };
 		DC4B1C9B25442D0400D7DD64 /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC4B1C9E25442D0400D7DD64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC4B1CA025442D0400D7DD64 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				DC4B1CC22544606800D7DD64 /* InputContainerView.swift */,
 				DC4B1CC42544674300D7DD64 /* CustomTextField.swift */,
 				DC4B1CD1254AE4F900D7DD64 /* UserCell.swift */,
+				DC2777AA254C1D22003E07F7 /* CustomInputAccessoryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				DC2777A9254B0DFD003E07F7 /* ChatController.swift in Sources */,
 				DC4B1CC52544674300D7DD64 /* CustomTextField.swift in Sources */,
 				DC4B1CD0254ADBE200D7DD64 /* NewMessageController.swift in Sources */,
+				DC2777AB254C1D22003E07F7 /* CustomInputAccessoryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
