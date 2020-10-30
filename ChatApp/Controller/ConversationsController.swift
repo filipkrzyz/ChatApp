@@ -45,6 +45,7 @@ class ConversationsController: UIViewController {
     
     @objc func handleNewMessageButtonTap() {
         let newMessageController = NewMessageController()
+        newMessageController.delegate = self
         let navigationController = UINavigationController(rootViewController: newMessageController)
         navigationController.modalPresentationStyle = .fullScreen
         present(navigationController, animated: true, completion: nil)
@@ -133,5 +134,15 @@ extension ConversationsController: UITableViewDataSource {
 extension ConversationsController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(">>> Selecter row index: \(indexPath.row)")
+    }
+}
+
+// MARK: - NewMessageControllerDelegate
+
+extension ConversationsController: NewMessageControllerDelegate {
+    func controller(_ controller: NewMessageController, wantsToStartChatWith user: User) {
+        controller.dismiss(animated: true, completion: nil)
+        let chatController = ChatController(user: user)
+        navigationController?.pushViewController(chatController, animated: true)
     }
 }
