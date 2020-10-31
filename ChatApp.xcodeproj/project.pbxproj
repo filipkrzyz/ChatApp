@@ -13,6 +13,7 @@
 		DC2777AD254C2F2A003E07F7 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2777AC254C2F2A003E07F7 /* MessageCell.swift */; };
 		DC2777AF254C3B11003E07F7 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2777AE254C3B11003E07F7 /* Message.swift */; };
 		DC2777B1254C5F24003E07F7 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2777B0254C5F24003E07F7 /* MessageViewModel.swift */; };
+		DC2777B3254D9E71003E07F7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2777B2254D9E71003E07F7 /* Constants.swift */; };
 		DC4B1C9F25442D0400D7DD64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B1C9E25442D0400D7DD64 /* AppDelegate.swift */; };
 		DC4B1CA125442D0400D7DD64 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B1CA025442D0400D7DD64 /* SceneDelegate.swift */; };
 		DC4B1CA325442D0400D7DD64 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B1CA225442D0400D7DD64 /* ViewController.swift */; };
@@ -44,6 +45,7 @@
 		DC2777AC254C2F2A003E07F7 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		DC2777AE254C3B11003E07F7 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		DC2777B0254C5F24003E07F7 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
+		DC2777B2254D9E71003E07F7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DC4B1C9B25442D0400D7DD64 /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC4B1C9E25442D0400D7DD64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC4B1CA025442D0400D7DD64 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				DC4B1CC02544477800D7DD64 /* Extensions.swift */,
+				DC2777B2254D9E71003E07F7 /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC4B1CA325442D0400D7DD64 /* ViewController.swift in Sources */,
+				DC2777B3254D9E71003E07F7 /* Constants.swift in Sources */,
 				DC4B1CC92548803C00D7DD64 /* RegistrationViewModel.swift in Sources */,
 				DC4B1CC32544606800D7DD64 /* InputContainerView.swift in Sources */,
 				DC4B1CCE254ABCD700D7DD64 /* AuthService.swift in Sources */,

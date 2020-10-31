@@ -98,11 +98,18 @@ extension ChatController: UICollectionViewDelegateFlowLayout {
 
 extension ChatController: CustomInputAccessoryViewDelegate {
     func inputView(_ inputView: CustomInputAccessoryView, wantsToSend messageText: String) {
-        fromCurrentUser.toggle()
-        let message = Message(text: messageText, isFromCurrentUser: fromCurrentUser)
-        messages.append(message)
-        customInputAccessoryView.messageInputTextView.text = nil
-        collectionView.reloadData()
-        print(">>> Message to send: \(messageText)")
+//        fromCurrentUser.toggle()
+//        let message = Message(text: messageText, isFromCurrentUser: fromCurrentUser)
+//        messages.append(message)
+//
+//        collectionView.reloadData()
+//        print(">>> Message to send: \(messageText)")
+        
+        Service.uploadMessage(messageText, to: user) { error in
+            if let error = error {
+                print(">>> Error uploading message: \(error.localizedDescription)")
+            }
+            self.customInputAccessoryView.messageInputTextView.text = nil
+        }
     }
 }
