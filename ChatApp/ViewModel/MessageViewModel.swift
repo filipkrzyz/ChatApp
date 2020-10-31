@@ -34,6 +34,11 @@ struct MessageViewModel {
         return message.isFromCurrentUser
     }
     
+    var profileImageUrl: URL? {
+        guard let user = message.user else { return nil }
+        return URL(string: user.profileImageUrl)
+    }
+    
     // MARK: - Lifecycle
     
     init(message: Message) {
