@@ -16,6 +16,7 @@ class ConversationsController: UIViewController {
     // MARK: - Properties
     
     private let tableView = UITableView()
+    private var conversations = [Conversation]()
     
     private let newMessageButton: UIButton = {
         let button = UIButton()
@@ -34,6 +35,7 @@ class ConversationsController: UIViewController {
         
         configureUI()
         authenticateUser()
+        fetchConversations()
     }
     
     // MARK: - Selectors
@@ -68,6 +70,13 @@ class ConversationsController: UIViewController {
             presentLoginScreen()
         } catch let error {
             print(">>> Error signing out: \(error)")
+        }
+    }
+    
+    func fetchConversations() {
+        Service.fetchConversations { conversations in
+            self.conversations = conversations
+            self.tableView.reloadData()
         }
     }
     
@@ -118,13 +127,13 @@ class ConversationsController: UIViewController {
 
 extension ConversationsController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return conversations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: conversationCellIdentifier,
                                                  for: indexPath)
-        cell.textLabel?.text = "TestCell"
+        cell.textLabel?.text = conversations[indexPath.row].message.text
         return cell
     }
 }
@@ -133,7 +142,9 @@ extension ConversationsController: UITableViewDataSource {
 
 extension ConversationsController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(">>> Selecter row index: \(indexPath.row)")
+        let user = conversations[indexPath.row].user
+        let chatController = ChatController(user: user)
+        navigationController?.pushViewController(chatController, animated: true)
     }
 }
 
