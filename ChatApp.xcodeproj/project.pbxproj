@@ -16,6 +16,8 @@
 		DC2777B3254D9E71003E07F7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2777B2254D9E71003E07F7 /* Constants.swift */; };
 		DC2777B525501656003E07F7 /* ConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2777B425501656003E07F7 /* ConversationCell.swift */; };
 		DC2777B725501EB6003E07F7 /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2777B625501EB6003E07F7 /* ConversationViewModel.swift */; };
+		DC2777B925502269003E07F7 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2777B825502269003E07F7 /* ProfileController.swift */; };
+		DC2777BB255024F6003E07F7 /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2777BA255024F6003E07F7 /* ProfileHeader.swift */; };
 		DC4B1C9F25442D0400D7DD64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B1C9E25442D0400D7DD64 /* AppDelegate.swift */; };
 		DC4B1CA125442D0400D7DD64 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B1CA025442D0400D7DD64 /* SceneDelegate.swift */; };
 		DC4B1CA325442D0400D7DD64 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B1CA225442D0400D7DD64 /* ViewController.swift */; };
@@ -50,6 +52,8 @@
 		DC2777B2254D9E71003E07F7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DC2777B425501656003E07F7 /* ConversationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCell.swift; sourceTree = "<group>"; };
 		DC2777B625501EB6003E07F7 /* ConversationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewModel.swift; sourceTree = "<group>"; };
+		DC2777B825502269003E07F7 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		DC2777BA255024F6003E07F7 /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		DC4B1C9B25442D0400D7DD64 /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC4B1C9E25442D0400D7DD64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC4B1CA025442D0400D7DD64 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 				DC4B1CB925442F3100D7DD64 /* ConversationsController.swift */,
 				DC4B1CCF254ADBE200D7DD64 /* NewMessageController.swift */,
 				DC2777A8254B0DFD003E07F7 /* ChatController.swift */,
+				DC2777B825502269003E07F7 /* ProfileController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -173,6 +178,7 @@
 				DC2777AA254C1D22003E07F7 /* CustomInputAccessoryView.swift */,
 				DC2777AC254C2F2A003E07F7 /* MessageCell.swift */,
 				DC2777B425501656003E07F7 /* ConversationCell.swift */,
+				DC2777BA255024F6003E07F7 /* ProfileHeader.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -337,6 +343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC2777B925502269003E07F7 /* ProfileController.swift in Sources */,
 				DC4B1CA325442D0400D7DD64 /* ViewController.swift in Sources */,
 				DC2777B3254D9E71003E07F7 /* Constants.swift in Sources */,
 				DC4B1CC92548803C00D7DD64 /* RegistrationViewModel.swift in Sources */,
@@ -354,6 +361,7 @@
 				DC4B1CBF2544406B00D7DD64 /* RegistrationController.swift in Sources */,
 				DC4B1CBD2544404B00D7DD64 /* LoginController.swift in Sources */,
 				DC4B1CC12544477800D7DD64 /* Extensions.swift in Sources */,
+				DC2777BB255024F6003E07F7 /* ProfileHeader.swift in Sources */,
 				DC4B1CC725486BD800D7DD64 /* LoginViewModel.swift in Sources */,
 				DC2777A9254B0DFD003E07F7 /* ChatController.swift in Sources */,
 				DC4B1CC52544674300D7DD64 /* CustomTextField.swift in Sources */,
