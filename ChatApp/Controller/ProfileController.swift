@@ -25,6 +25,10 @@ class ProfileController: UITableViewController {
                                                              width: view.frame.width,
                                                              height: 380))
     
+    private lazy var footerView = ProfileFooterView(frame: .init(x: 0, y: 0,
+                                                                 width: view.frame.width,
+                                                                 height: 100))
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -60,10 +64,10 @@ class ProfileController: UITableViewController {
         headerView.delegate = self
         tableView.tableHeaderView = headerView
         tableView.register(ProfileCell.self, forCellReuseIdentifier: profileCellIdentifier)
-        tableView.tableFooterView = UIView()
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.rowHeight = 64
         tableView.backgroundColor = .systemGroupedBackground
+        tableView.tableFooterView = footerView
     }
 }
 
