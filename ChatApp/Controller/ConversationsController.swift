@@ -46,7 +46,7 @@ class ConversationsController: UIViewController {
     // MARK: - Selectors
     
     @objc func showProfile() {
-        let profileController = ProfileController()
+        let profileController = ProfileController(style: .insetGrouped)
         let navigationController = UINavigationController(rootViewController: profileController)
         navigationController.modalPresentationStyle = .fullScreen
         present(navigationController, animated: true, completion: nil)

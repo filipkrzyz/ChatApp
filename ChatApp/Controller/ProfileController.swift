@@ -59,21 +59,34 @@ class ProfileController: UITableViewController {
         
         headerView.delegate = self
         tableView.tableHeaderView = headerView
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: profileCellIdentifier)
+        tableView.register(ProfileCell.self, forCellReuseIdentifier: profileCellIdentifier)
         tableView.tableFooterView = UIView()
         tableView.contentInsetAdjustmentBehavior = .never
+        tableView.rowHeight = 64
+        tableView.backgroundColor = .systemGroupedBackground
     }
 }
 
+// MARK: - UITableViewDataSource
+
 extension ProfileController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return ProfileViewModel.allCases.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: profileCellIdentifier,
-                                                 for: indexPath)
+                                                 for: indexPath) as! ProfileCell
+        let profileViewModel = ProfileViewModel(rawValue: indexPath.row)
+        cell.profileViewModel = profileViewModel
+        cell.accessoryType = .disclosureIndicator
         return cell
+    }
+}
+
+extension ProfileController {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UIView()
     }
 }
 
