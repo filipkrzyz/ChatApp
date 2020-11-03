@@ -8,9 +8,21 @@
 
 import UIKit
 
+protocol ProfileHeaderDelegate: AnyObject {
+    func handleDismissal()
+}
+
 class ProfileHeader: UIView {
      
     // MARK: - Properties
+    
+    var user: User? {
+        didSet {
+            populateUserData()
+        }
+    }
+    
+    weak var delegate: ProfileHeaderDelegate?
     
     private let dismissButton: UIButton = {
         let button = UIButton(type: .system)
@@ -35,15 +47,14 @@ class ProfileHeader: UIView {
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textColor = .white
         label.textAlignment = .center
-        label.text = "Full Name"
         return label
     }()
     
     let usernameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
+        label.textColor = .white
         label.textAlignment = .center
-        label.text = "@username"
         return label
     }()
     
@@ -59,16 +70,23 @@ class ProfileHeader: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - API
-    
-    
     // MARK: - Selectors
     
     @objc func handleDismissal() {
-        print(">>> Dismiss the profile controller.")
+        delegate?.handleDismissal()
     }
     
     // MARK: - Helpers
+    
+    func populateUserData() {
+        guard let user = user else { return }
+        
+        fullnameLabel.text = user.fullname
+        usernameLabel.text = "@" + user.username
+        
+        guard let url = URL(string: user.profileImageUrl) else { return }
+        profileImageView.sd_setImage(with: url)
+    }
     
     func configureUI() {
         configureGradientLayer()

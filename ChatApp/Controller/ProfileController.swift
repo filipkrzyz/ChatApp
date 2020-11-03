@@ -7,12 +7,19 @@
 //
 
 import UIKit
+import Firebase
 
 let profileCellIdentifier = "ProfileCell"
 
 class ProfileController: UITableViewController {
     
     // MARK: - Properties
+    
+    private var user: User? {
+        didSet {
+            headerView.user = user
+        }
+    }
     
     private lazy var headerView = ProfileHeader(frame: .init(x: 0, y: 0,
                                                              width: view.frame.width,
@@ -24,6 +31,7 @@ class ProfileController: UITableViewController {
         super.viewDidLoad()
         
         configureUI()
+        fetchUser()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,6 +42,12 @@ class ProfileController: UITableViewController {
     
     // MARK: - API
     
+    func fetchUser() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        Service.fetchUser(withUid: uid) { user in
+            self.user = user
+        }
+    }
     
     // MARK: - Selectors
     
@@ -43,6 +57,7 @@ class ProfileController: UITableViewController {
     func configureUI() {
         view.backgroundColor = .white
         
+        headerView.delegate = self
         tableView.tableHeaderView = headerView
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: profileCellIdentifier)
         tableView.tableFooterView = UIView()
@@ -59,5 +74,13 @@ extension ProfileController {
         let cell = tableView.dequeueReusableCell(withIdentifier: profileCellIdentifier,
                                                  for: indexPath)
         return cell
+    }
+}
+
+// MARK: - ProfileHeaderDelegate
+
+extension ProfileController: ProfileHeaderDelegate {
+    func handleDismissal() {
+        dismiss(animated: true, completion: nil)
     }
 }
