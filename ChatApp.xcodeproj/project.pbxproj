@@ -40,7 +40,7 @@
 		DC4B1CD6254AECC000D7DD64 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4B1CD5254AECC000D7DD64 /* Service.swift */; };
 		DC58C1BB2551623000E7C10F /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC58C1BA2551623000E7C10F /* ProfileViewModel.swift */; };
 		DC58C1BD2551665700E7C10F /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC58C1BC2551665700E7C10F /* ProfileCell.swift */; };
-		DC58C1BF255172BB00E7C10F /* ProfileFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC58C1BE255172BB00E7C10F /* ProfileFooterView.swift */; };
+		DC58C1BF255172BB00E7C10F /* ProfileFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC58C1BE255172BB00E7C10F /* ProfileFooter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,7 +81,7 @@
 		DC4B1CD5254AECC000D7DD64 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		DC58C1BA2551623000E7C10F /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		DC58C1BC2551665700E7C10F /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
-		DC58C1BE255172BB00E7C10F /* ProfileFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFooterView.swift; sourceTree = "<group>"; };
+		DC58C1BE255172BB00E7C10F /* ProfileFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFooter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,7 +187,7 @@
 				DC2777B425501656003E07F7 /* ConversationCell.swift */,
 				DC2777BA255024F6003E07F7 /* ProfileHeader.swift */,
 				DC58C1BC2551665700E7C10F /* ProfileCell.swift */,
-				DC58C1BE255172BB00E7C10F /* ProfileFooterView.swift */,
+				DC58C1BE255172BB00E7C10F /* ProfileFooter.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -359,7 +359,7 @@
 				DC4B1CC92548803C00D7DD64 /* RegistrationViewModel.swift in Sources */,
 				DC4B1CC32544606800D7DD64 /* InputContainerView.swift in Sources */,
 				DC4B1CCE254ABCD700D7DD64 /* AuthService.swift in Sources */,
-				DC58C1BF255172BB00E7C10F /* ProfileFooterView.swift in Sources */,
+				DC58C1BF255172BB00E7C10F /* ProfileFooter.swift in Sources */,
 				DC2777B1254C5F24003E07F7 /* MessageViewModel.swift in Sources */,
 				DC4B1C9F25442D0400D7DD64 /* AppDelegate.swift in Sources */,
 				DC4B1CBA25442F3100D7DD64 /* ConversationsController.swift in Sources */,
