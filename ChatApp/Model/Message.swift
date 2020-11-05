@@ -6,7 +6,9 @@
 //  Copyright © 2020 Filip Krzyzanowski. All rights reserved.
 //
 
-import Firebase
+//import Firebase
+import FirebaseFirestore
+import FirebaseAuth
 
 struct Message {
     let text: String

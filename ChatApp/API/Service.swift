@@ -6,23 +6,22 @@
 //  Copyright © 2020 Filip Krzyzanowski. All rights reserved.
 //
 
-import Firebase
+import FirebaseAuth
+import FirebaseFirestore
 
 struct Service {
      
     static func fetchUsers(completion: @escaping(([User]) -> Void)) {
-        var users = [User]()
         COLLECTION_USERS.getDocuments { (snapshot, error) in
-            snapshot?.documents.forEach({ document in
-                let dictionary = document.data()
-                let user = User(dictionary: dictionary)
-                
-                users.append(user)
-                
-                if users.count == snapshot?.documents.count {
-                   completion(users)
-                }
-            })
+            guard var users = snapshot?.documents.map({ User(dictionary: $0.data()) }) else { return }
+            
+            guard let currentUid = Auth.auth().currentUser?.uid else { return }
+            
+            if let i = users.firstIndex(where: { $0.uid == currentUid }) {
+                users.remove(at: i)
+            }
+            
+            completion(users)
         }
     }
     

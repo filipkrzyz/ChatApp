@@ -6,7 +6,9 @@
 //  Copyright © 2020 Filip Krzyzanowski. All rights reserved.
 //
 
-import Firebase
+import FirebaseAuth
+import FirebaseStorage
+import FirebaseFirestore
 import UIKit
 
 struct RegistrationCredentials {

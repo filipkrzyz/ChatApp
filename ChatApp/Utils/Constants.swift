@@ -6,7 +6,7 @@
 //  Copyright © 2020 Filip Krzyzanowski. All rights reserved.
 //
 
-import Firebase
+import FirebaseFirestore
 
 let COLLECTION_MESSAGES = Firestore.firestore().collection("messages")
 let COLLECTION_USERS = Firestore.firestore().collection("users")
