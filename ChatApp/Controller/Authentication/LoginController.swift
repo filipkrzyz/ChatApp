@@ -14,11 +14,17 @@ protocol AuthenticationControllerProtocol {
     func checkFormStatus()
 }
 
+protocol AuthenticationDelegate: AnyObject {
+    func authenticationComplete()
+}
+
 class LoginController: UIViewController {
     
     // MARK: - Properties
     
     private var viewModel = LoginViewModel()
+    
+    weak var delegate: AuthenticationDelegate?
     
     private let iconImage: UIImageView = {
         let imageView = UIImageView()
@@ -95,13 +101,14 @@ class LoginController: UIViewController {
             }
             
             self.showLoader(false)
-            self.dismiss(animated: true, completion: nil)
+            self.delegate?.authenticationComplete()
         }
     }
     
     @objc func handleShowSignUp() {
-        let registrationControlle = RegistrationController()
-        navigationController?.pushViewController(registrationControlle, animated: true)
+        let registrationController = RegistrationController()
+        registrationController.delegate = delegate
+        navigationController?.pushViewController(registrationController, animated: true)
     }
     
     @objc func textDidChange(sender: UITextField) {
