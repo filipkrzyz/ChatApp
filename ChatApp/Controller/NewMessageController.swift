@@ -48,8 +48,10 @@ class NewMessageController: UITableViewController {
     // MARK: - API
     
     func fetchUsers() {
+        showLoader(true)
         Service.fetchUsers { users in
             self.users = users
+            self.showLoader(false)
             self.tableView.reloadData()
         }
     }

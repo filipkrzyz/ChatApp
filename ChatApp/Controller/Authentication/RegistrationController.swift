@@ -112,7 +112,7 @@ class RegistrationController: UIViewController {
         
         AuthService.shared.registerUser(credentials: credentials) { error in
             if let error = error {
-                print(">>> Failed to upload user data to Firestore with error: \(error)")
+                self.showError(error.localizedDescription)
                 self.showLoader(false)
                 return
             }

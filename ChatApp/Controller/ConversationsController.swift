@@ -82,11 +82,13 @@ class ConversationsController: UIViewController {
     }
     
     func fetchConversations() {
+        showLoader(true)
         Service.fetchConversations { conversations in
             conversations.forEach { conversation in
                 let message = conversation.message
                 self.conversationsDictionary[message.chatPartnerId] = conversation
             }
+            self.showLoader(false)
             self.conversations = Array(self.conversationsDictionary.values)
             self.tableView.reloadData()
         }
