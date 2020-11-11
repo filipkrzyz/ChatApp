@@ -17,7 +17,11 @@ class ConversationsController: UIViewController {
     // MARK: - Properties
     
     private let tableView = UITableView()
-    private var conversations = [Conversation]()
+    private var conversations = [Conversation]() {
+        didSet{
+            conversations = conversations.sorted{ $0.message.timestamp.dateValue() > $1.message.timestamp.dateValue() }
+        }
+    }
     private var conversationsDictionary = [String: Conversation]()
     
     private let newMessageButton: UIButton = {
@@ -75,6 +79,7 @@ class ConversationsController: UIViewController {
         do {
             try Auth.auth().signOut()
             print(">>> User signed out")
+            self.conversationsDictionary.removeAll()
             presentLoginScreen()
         } catch let error {
             print(">>> Error signing out: \(error)")

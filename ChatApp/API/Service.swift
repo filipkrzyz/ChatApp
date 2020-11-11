@@ -17,9 +17,12 @@ struct Service {
             
             guard let currentUid = Auth.auth().currentUser?.uid else { return }
             
+            // Remove the current user
             if let i = users.firstIndex(where: { $0.uid == currentUid }) {
                 users.remove(at: i)
             }
+            
+            users = users.sorted{$0.username < $1.username}
             
             completion(users)
         }
@@ -40,6 +43,12 @@ struct Service {
         let query = COLLECTION_MESSAGES.document(currentUid).collection("recent-messages").order(by: "timestamp")
         
         query.addSnapshotListener { (snapshot, error) in
+            
+            guard snapshot?.documentChanges.count != 0 else {
+                completion(conversations)
+                return
+            }
+            
             snapshot?.documentChanges.forEach({ change in
                 let dictionary = change.document.data()
                 let message = Message(dictionary: dictionary)
@@ -47,8 +56,10 @@ struct Service {
                 self.fetchUser(withUid: message.chatPartnerId) { user in
                     let conversation = Conversation(user: user, message: message)
                     conversations.append(conversation)
+                    print(">>> conversations passed in COMPLETION: \(conversations)")
                     completion(conversations)
                 }
+                
             })
         }
     }
@@ -60,13 +71,18 @@ struct Service {
         let query = COLLECTION_MESSAGES.document(currentUid).collection(user.uid).order(by: "timestamp")
         
         query.addSnapshotListener { (snapshot, error) in
+            
+            guard snapshot?.documentChanges.count != 0 else {
+                completion(messages)
+                return
+            }
+            
             snapshot?.documentChanges.forEach({ change in
+                
                 if change.type == .added {
                     let dictionary = change.document.data()
                     messages.append(Message(dictionary: dictionary))
-                    
                     completion(messages)
-                    
                 }
             })
         }
