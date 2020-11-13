@@ -22,7 +22,6 @@ class ConversationsController: UIViewController {
             conversations = conversations.sorted{ $0.message.timestamp.dateValue() > $1.message.timestamp.dateValue() }
         }
     }
-    private var conversationsDictionary = [String: Conversation]()
     
     private let newMessageButton: UIButton = {
         let button = UIButton()
@@ -70,8 +69,10 @@ class ConversationsController: UIViewController {
     // MARK: - API
     
     func authenticateUser() {
-        if Auth.auth().currentUser?.uid == nil {
-            presentLoginScreen()
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            if user == nil {
+                self.presentLoginScreen()
+            }
         }
     }
     
@@ -79,8 +80,8 @@ class ConversationsController: UIViewController {
         do {
             try Auth.auth().signOut()
             print(">>> User signed out")
-            self.conversationsDictionary.removeAll()
-            presentLoginScreen()
+            self.conversations.removeAll()
+            presentLoginScreen()            // this might not be necessary as it's called in authUser
         } catch let error {
             print(">>> Error signing out: \(error)")
         }
@@ -88,13 +89,9 @@ class ConversationsController: UIViewController {
     
     func fetchConversations() {
         showLoader(true)
-        Service.fetchConversations { conversations in
-            conversations.forEach { conversation in
-                let message = conversation.message
-                self.conversationsDictionary[message.chatPartnerId] = conversation
-            }
+        Service.fetchConversations { conversationsDict in
             self.showLoader(false)
-            self.conversations = Array(self.conversationsDictionary.values)
+            self.conversations = Array(conversationsDict.values)
             self.tableView.reloadData()
         }
     }

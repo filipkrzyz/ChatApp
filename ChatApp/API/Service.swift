@@ -36,16 +36,21 @@ struct Service {
         }
     }
     
-    static func fetchConversations(completion: @escaping([Conversation]) -> Void) {
-        var conversations = [Conversation]()
-        guard let currentUid = Auth.auth().currentUser?.uid else { return }
+    static func fetchConversations(completion: @escaping([String: Conversation]) -> Void) {
+        var conversationsDict = [String: Conversation]()
+        
+        guard let currentUid = Auth.auth().currentUser?.uid else {
+            completion(conversationsDict)
+            return
+        }
         
         let query = COLLECTION_MESSAGES.document(currentUid).collection("recent-messages").order(by: "timestamp")
         
         query.addSnapshotListener { (snapshot, error) in
             
-            guard snapshot?.documentChanges.count != 0 else {
-                completion(conversations)
+            
+            guard let changes = snapshot?.documentChanges, changes.count != 0 else {
+                completion(conversationsDict)
                 return
             }
             
@@ -55,9 +60,10 @@ struct Service {
                 
                 self.fetchUser(withUid: message.chatPartnerId) { user in
                     let conversation = Conversation(user: user, message: message)
-                    conversations.append(conversation)
-                    print(">>> conversations passed in COMPLETION: \(conversations)")
-                    completion(conversations)
+                    
+                    conversationsDict[user.uid] = conversation
+                    completion(conversationsDict)
+                    
                 }
                 
             })
@@ -97,11 +103,9 @@ struct Service {
                     "timestamp": Timestamp(date: Date())] as [String: Any]
         
         COLLECTION_MESSAGES.document(currentUid).collection(user.uid).addDocument(data: data) { _ in
-            
-            COLLECTION_MESSAGES.document(user.uid).collection(currentUid).addDocument(data: data, completion: completion)
-            COLLECTION_MESSAGES.document(currentUid).collection("recent-messages").document(user.uid).setData(data)
-            
-            COLLECTION_MESSAGES.document(user.uid).collection("recent-messages").document(currentUid).setData(data)
+            COLLECTION_MESSAGES.document(user.uid).collection(currentUid).addDocument(data: data) { _ in
+                COLLECTION_MESSAGES.document(currentUid).collection("recent-messages").document(user.uid).setData(data) { _ in
+                    COLLECTION_MESSAGES.document(user.uid).collection("recent-messages").document(currentUid).setData(data, completion: completion)
         }
     }
 }
