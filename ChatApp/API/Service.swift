@@ -10,6 +10,9 @@ import FirebaseAuth
 import FirebaseFirestore
 
 struct Service {
+    
+    private static var messagesListener: ListenerRegistration?
+    private static var conversationsListener: ListenerRegistration?
      
     static func fetchUsers(completion: @escaping(([User]) -> Void)) {
         COLLECTION_USERS.getDocuments { (snapshot, error) in
@@ -46,7 +49,7 @@ struct Service {
         
         let query = COLLECTION_MESSAGES.document(currentUid).collection("recent-messages").order(by: "timestamp")
         
-        query.addSnapshotListener { (snapshot, error) in
+        conversationsListener = query.addSnapshotListener { (snapshot, error) in
             
             
             guard let changes = snapshot?.documentChanges, changes.count != 0 else {
@@ -76,7 +79,7 @@ struct Service {
         
         let query = COLLECTION_MESSAGES.document(currentUid).collection(user.uid).order(by: "timestamp")
         
-        query.addSnapshotListener { (snapshot, error) in
+        messagesListener = query.addSnapshotListener { (snapshot, error) in
             
             guard snapshot?.documentChanges.count != 0 else {
                 completion(messages)
@@ -104,8 +107,16 @@ struct Service {
         
         COLLECTION_MESSAGES.document(currentUid).collection(user.uid).addDocument(data: data) { _ in
             COLLECTION_MESSAGES.document(user.uid).collection(currentUid).addDocument(data: data) { _ in
-                COLLECTION_MESSAGES.document(currentUid).collection("recent-messages").document(user.uid).setData(data) { _ in
-                    COLLECTION_MESSAGES.document(user.uid).collection("recent-messages").document(currentUid).setData(data, completion: completion)
+            COLLECTION_MESSAGES.document(currentUid).collection("recent-messages").document(user.uid).setData(data) { _ in
+                COLLECTION_MESSAGES.document(user.uid).collection("recent-messages").document(currentUid).setData(data, completion: completion)
+                }
+            }
         }
     }
+    
+    static func removeListeners() {
+        messagesListener?.remove()
+        conversationsListener?.remove()
+    }
+    
 }

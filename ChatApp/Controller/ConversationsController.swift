@@ -81,6 +81,7 @@ class ConversationsController: UIViewController {
             try Auth.auth().signOut()
             print(">>> User signed out")
             self.conversations.removeAll()
+            Service.removeListeners()
             presentLoginScreen()            // this might not be necessary as it's called in authUser
         } catch let error {
             print(">>> Error signing out: \(error)")
