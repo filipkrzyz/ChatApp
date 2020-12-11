@@ -4,7 +4,9 @@ Fully programmatic Real Time Chat App for iOS 13 using Swift 5, Cloud Firestore 
 
 Features
 - Register and authenticate users using Firebase
-- 
+- Search users and send them a message
+- Receive messages in real time
+- Browse through your conversations list
 
 # Screenshots
 ![signin][1]     ![signup][2]     ![profile][3]       ![conversations][4]      ![chat1][5]     ![chat2][6]     ![newMessage][7]
